@@ -1,13 +1,12 @@
 Name:           xenops-cli
-Version:        1.1.0
+Version:        1.3.0
 Release:        5%{?dist}
 Summary:        CLI for xenopsd, the xapi toolstack domain manager
 License:        LGPL
 URL:            https://github.com/xapi-project/xenops-cli
 Source0:        https://code.citrite.net/rest/archive/latest/projects/XSU/repos/%{name}/archive?at=v%{version}&format=tar.gz&prefix=%{name}-%{version}#/%{name}-%{version}.tar.gz
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xenops-cli/archive?at=v1.1.0&format=tar.gz&prefix=xenops-cli-1.1.0#/xenops-cli-1.1.0.tar.gz) = 90dd0a6d38d8ac6163155141041572808cb6ea4c
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xenops-cli/archive?at=v1.3.0&format=tar.gz&prefix=xenops-cli-1.3.0#/xenops-cli-1.3.0.tar.gz) = 88022e8473ddbdff08773d2402b6effe3d910fba
 BuildRequires:  ocaml
-BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  opam
 BuildRequires:  xs-opam-repo
 BuildRequires:  ocaml-xcp-idl-devel
@@ -20,10 +19,10 @@ Command-line interface for xenopsd, the xapi toolstack domain manager.
 
 %build
 make
-./main.native --help=groff > xenops-cli.1 && gzip xenops-cli.1
+_build/install/default/bin/xenops-cli --help=groff > xenops-cli.1 && gzip xenops-cli.1
 
 %install
-%{__install} -D -m 0755 main.native %{buildroot}%{_sbindir}/xenops-cli
+%{__install} -D -m 0755 _build/install/default/bin/xenops-cli %{buildroot}%{_sbindir}/xenops-cli
 %{__install} -D -m 0644 xenops-cli.1.gz %{buildroot}%{_mandir}/man1/xenops-cli.1.gz
 
 %files
@@ -32,6 +31,13 @@ make
 %{_mandir}/man1/xenops-cli.1.gz
 
 %changelog
+* Thu May 24 2018 Christian Lindig <christian.lindig@citrix.com> - 1.3.0-1
+- CA-289145: Close socket if error occurs when connecting
+
+* Mon May 14 2018 Christian Lindig <christian.lindig@citrix.com> - 1.2.0-1
+- xenops-cli: port to ppx_deriving_rpc and jbuilder
+- Add default for --queue option
+
 * Wed Nov 01 2017 Rob Hoes <rob.hoes@citrix.com> - 1.1.0-1
 - Update VM.migrate with vgpu map
 
