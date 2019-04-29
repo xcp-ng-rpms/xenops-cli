@@ -1,11 +1,15 @@
 Name:           xenops-cli
-Version:        1.3.0
-Release:        5%{?dist}
+Version:        1.7.0
+Release:        1%{?dist}
 Summary:        CLI for xenopsd, the xapi toolstack domain manager
 License:        LGPL
 URL:            https://github.com/xapi-project/xenops-cli
-Source0:        https://code.citrite.net/rest/archive/latest/projects/XSU/repos/%{name}/archive?at=v%{version}&format=tar.gz&prefix=%{name}-%{version}#/%{name}-%{version}.tar.gz
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xenops-cli/archive?at=v1.3.0&format=tar.gz&prefix=xenops-cli-1.3.0#/xenops-cli-1.3.0.tar.gz) = 88022e8473ddbdff08773d2402b6effe3d910fba
+
+Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xenops-cli/archive?at=v1.7.0&format=tar.gz&prefix=xenops-cli-1.7.0#/xenops-cli-1.7.0.tar.gz
+
+
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xenops-cli/archive?at=v1.7.0&format=tar.gz&prefix=xenops-cli-1.7.0#/xenops-cli-1.7.0.tar.gz) = 5ef59104737c4fd011cf8805aec9706e56e1f877
+
 BuildRequires:  ocaml
 BuildRequires:  opam
 BuildRequires:  xs-opam-repo
@@ -31,6 +35,18 @@ _build/install/default/bin/xenops-cli --help=groff > xenops-cli.1 && gzip xenops
 %{_mandir}/man1/xenops-cli.1.gz
 
 %changelog
+* Wed Jan 23 2019 Christian Lindig <christian.lindig@citrix.com> - 1.7.0-1
+- Prepare for Dune 1.6
+
+* Tue Dec 04 2018 Christian Lindig <christian.lindig@citrix.com> - 1.6.0-1
+- Moved from jbuilder to dune and deprecated xcp in favour of xapi-idl.
+
+* Thu Oct 11 2018 Rob Hoes <rob.hoes@citrix.com> - 1.5.0-1
+- CP-28301: plumb through firmware type parameter
+
+* Wed Sep 05 2018 Christian Lindig <christian.lindig@citrix.com> - 1.4.0-1
+- Use PPX xenops interface
+
 * Thu May 24 2018 Christian Lindig <christian.lindig@citrix.com> - 1.3.0-1
 - CA-289145: Close socket if error occurs when connecting
 
