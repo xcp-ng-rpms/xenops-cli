@@ -1,14 +1,14 @@
 Name:           xenops-cli
-Version:        1.7.0
+Version:        1.8.0
 Release:        1%{?dist}
 Summary:        CLI for xenopsd, the xapi toolstack domain manager
 License:        LGPL
 URL:            https://github.com/xapi-project/xenops-cli
 
-Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xenops-cli/archive?at=v1.7.0&format=tar.gz&prefix=xenops-cli-1.7.0#/xenops-cli-1.7.0.tar.gz
+Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xenops-cli/archive?at=v1.8.0&format=tar.gz&prefix=xenops-cli-1.8.0#/xenops-cli-1.8.0.tar.gz
 
 
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xenops-cli/archive?at=v1.7.0&format=tar.gz&prefix=xenops-cli-1.7.0#/xenops-cli-1.7.0.tar.gz) = 5ef59104737c4fd011cf8805aec9706e56e1f877
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/xenops-cli/archive?at=v1.8.0&format=tar.gz&prefix=xenops-cli-1.8.0#/xenops-cli-1.8.0.tar.gz) = 620aa146591a063265bbb7aa6e65dcd09b1d19e4
 
 BuildRequires:  ocaml
 BuildRequires:  opam
@@ -35,6 +35,12 @@ _build/install/default/bin/xenops-cli --help=groff > xenops-cli.1 && gzip xenops
 %{_mandir}/man1/xenops-cli.1.gz
 
 %changelog
+* Mon Oct 14 2019 Christian Lindig <christian.lindig@citrix.com> - 1.8.0-1
+- Merge REQ-627 SR-IOV support for NVidia GPUs
+
+* Fri Aug 23 2019 Edwin Török <edvin.torok@citrix.com> - 1.7.0-3
+- bump packages after xs-opam update
+
 * Wed Jan 23 2019 Christian Lindig <christian.lindig@citrix.com> - 1.7.0-1
 - Prepare for Dune 1.6
 
